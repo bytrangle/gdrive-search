@@ -1,0 +1,32 @@
+{
+  "name": "gogol",
+  "version": "1.0.0",
+  "description": "A command line application that lets users search for their files in Google Drive from the terminal.",
+  "bin": "./bin/godri.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bytrangle/gdrive-search.git"
+  },
+  "keywords": [
+    "CLI",
+    "command",
+    "line",
+    "application",
+    "cli",
+    "app",
+    "node.js",
+    "google",
+    "drive",
+    "api"
+  ],
+  "author": "Trang Le <lethutrang101@gmail.com> (http://bytrangle.surge.sh)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bytrangle/gdrive-search/issues"
+  },
+  "homepage": "https://github.com/bytrangle/gdrive-search#readme"
+}
