@@ -1,11 +1,13 @@
 {
   "name": "godri",
   "version": "1.0.0",
-  "description": "A command line application that lets users search for their files in Google Drive from the terminal.",
+  "description": "A command line application that lets you search for files in your Google Drive without going to the browser",
   "bin": {
     "godri": "./bin/godri.js"
   },
-  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,14 +17,15 @@
   },
   "keywords": [
     "CLI",
-    "command",
-    "line",
+    "CLI app",
+    "command line application",
     "application",
     "cli",
     "app",
     "node.js",
     "google",
-    "drive",
+    "google drive",
+    "oauth2",
     "api"
   ],
   "author": "Trang Le <lethutrang101@gmail.com> (http://bytrangle.surge.sh)",
@@ -43,6 +46,8 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-table3": "^0.6.0",
     "commander": "^6.1.0",
     "configstore": "^5.0.1",
     "dotenv": "^8.2.0",
