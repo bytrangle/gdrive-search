@@ -117,3 +117,4 @@ dist
 
 # credentials
 credentials.json
+oAuth2Client.js
