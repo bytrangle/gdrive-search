@@ -1,17 +1,8 @@
 #!/usr/bin/env node
 const commander = require('commander');
-const chalk = require('chalk');
 const pkg = require('../package.json');
-const search = require('../commands/search');
 const auth = require('../commands/auth');
 const util = require('../lib/util');
-
-const program = new commander.Command();
-program.version(
-  pkg.version,
-  '-v, --vers',
-  'Output the current version',
-);
 
 // program
 //   .command('search <keyword>')
@@ -33,8 +24,9 @@ program.version(
 //     console.log('waiting');
 //     return search(keyword, cmdObj);
 //   });
-
+const program = new commander.Command();
 program
+  .version(pkg.version, '-v, --vers', 'Output the current version')
   .command(
     'search <keyword>',
     'Search files in Google Drive that match a given keyword. Please wrap multi-words in single quotes',
