@@ -1,6 +1,6 @@
 {
   "name": "godri",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A command line application that lets you search for files in your Google Drive without going to the browser",
   "bin": {
     "godri": "bin/godri.js"
