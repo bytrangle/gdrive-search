@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A command line application that lets you search for files in your Google Drive without going to the browser",
   "bin": {
-    "godri": "./bin/godri.js"
+    "godri": "bin/godri.js"
   },
   "publishConfig": {
     "access": "public"
@@ -46,15 +46,18 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
+    "arg": "^4.1.3",
     "chalk": "^4.1.0",
     "cli-table3": "^0.6.0",
     "commander": "^6.1.0",
     "configstore": "^5.0.1",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "googleapis": "^61.0.0",
     "inquirer": "^7.3.3",
     "keytar": "^7.0.0",
     "node-vault": "^0.9.20",
-    "opn": "^6.0.0"
+    "opn": "^6.0.0",
+    "ora": "^5.1.0"
   }
 }

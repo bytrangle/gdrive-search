@@ -40,19 +40,16 @@ const search = (
   searchRange = 'fullText',
   fileType,
 ) => {
-  // console.log(owner);
-  // console.log(mimeType);
   auth
     .authentication()
     .then((oAuth2Client) => {
-      // console.log(oAuth2Client);
       let query = `${searchRange} contains '${keyword}'`;
       if (owner) query = `${query} and 'me' in owners`;
       const mimeType = mimeTypes[fileType];
       if (mimeType) query = `${query} and mimeType = '${mimeType}'`;
-      console.log(query);
       listFiles(oAuth2Client, query);
     })
     .catch(util.handleError);
 };
+
 module.exports = search;

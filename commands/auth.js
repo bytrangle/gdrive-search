@@ -2,7 +2,8 @@ const { google } = require('googleapis');
 const inquirer = require('inquirer');
 const pkg = require('../package-lock.json');
 const CredentialManager = require('../lib/credentialManager');
-const util = require('../lib/util');
+const initOAuth2Client = require('../lib/oAuth2Client');
+const { openBrowser, notEmpty } = require('../lib/util');
 
 const SCOPES = [
   'https://www.googleapis.com/auth/drive.metadata.readonly',
@@ -24,9 +25,8 @@ async function getUserInfo(auth) {
   }
 }
 
-const oAuth2Client = util.createOAuth2Client();
-
 async function getAccessToken() {
+  const oAuth2Client = await initOAuth2Client();
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
     scope: SCOPES,
@@ -37,12 +37,12 @@ async function getAccessToken() {
       'Please press Enter to open Googole Drive in your default browser and authorize access',
     name: 'continue',
   });
-  util.openBrowser(authUrl);
+  openBrowser(authUrl);
   const code = await inquirer.prompt({
     type: 'input',
     message: 'Please enter the code provided by Google Drive',
     name: 'code',
-    validate: util.notEmpty,
+    validate: notEmpty,
   });
   oAuth2Client.getToken(code, async (err, token) => {
     if (err) throw new Error(`Error retrieving access token: ${err}`);
@@ -60,7 +60,10 @@ async function getAccessToken() {
 
 async function authentication() {
   const tokens = await creds.getConfig('tokens');
-  oAuth2Client.setCredentials(tokens);
+  const oAuth2Client = await initOAuth2Client();
+  oAuth2Client.setCredentials({
+    refresh_token: tokens.refresh_token,
+  });
   return oAuth2Client;
 }
 
